@@ -1,3 +1,6 @@
+import { login } from './auth.js';
+import { showProfileView } from './profile.js';
+
 export function showLoginView() {
   document.getElementById('login-view').classList.remove('hidden');
   document.getElementById('profile-view').classList.add('hidden');
@@ -85,8 +88,51 @@ function setupLoginListeners() {
   identifierInput.addEventListener('input', clearError);
   passwordInput.addEventListener('input', clearError);
 
+  // Form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearError();
+
+    const identifier = identifierInput.value.trim();
+    const password = passwordInput.value;
+    const loginType = document.querySelector('input[name="login-type"]:checked').value;
+
+    // Only check that fields are not empty — let the server validate credentials
+    if (!identifier) {
+      showError(loginType === 'username' ? 'Username is required.' : 'Email is required.');
+      return;
+    }
+    if (!password) {
+      showError('Password is required.');
+      return;
+    }
+
+    // Show loading state while waiting for the server
+    setLoading(true);
+
+    try {
+      await login(identifier, password);
+      showProfileView();
+    } catch (err) {
+      showError(err.message || 'Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  });
+
+  function setLoading(isLoading) {
+    submitBtn.disabled = isLoading;
+    btnText.textContent = isLoading ? 'Signing in…' : 'Sign In';
+    btnSpinner.classList.toggle('hidden', !isLoading);
+  }
+
   function clearError() {
     errorEl.textContent = '';
     errorEl.classList.add('hidden');
+  }
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.classList.remove('hidden');
   }
 }
