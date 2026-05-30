@@ -7,7 +7,10 @@ export function showLoginView() {
 
   document.getElementById('login-view').innerHTML = `
     <div class="login-container">
-      <h1>Login</h1>
+      <div class="login-header">
+        <span class="login-brand">Z01</span>
+        <h1>Login</h1>
+      </div>
       <form id="login-form">
         <div class="radio-group">
           <label>

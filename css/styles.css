@@ -53,3 +53,221 @@ body {
   background: var(--border);
   border-radius: 3px;
 }
+
+/* ─── Login Page ──────────────────────────────────────────────────────────── */
+
+/* Full-page centering wrapper */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0, 229, 160, 0.2) 0%, transparent 70%),
+    var(--bg);
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  gap: 1rem;
+}
+
+.login-header .login-brand {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.login-container h1 {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* The form card */
+.login-container form {
+  width: min(100%, 400px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  animation: fadeUp 0.4s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Radio buttons row */
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.radio-group input[type='radio'] {
+  accent-color: var(--accent);
+  cursor: pointer;
+  transform: translateY(-1.5px); /* We need this to align with the text */
+}
+
+/* Label + input pairs */
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  outline: none;
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
+}
+
+.input-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.input-group input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Password field with the eye button inside it */
+.password-wrapper {
+  position: relative;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.6;
+  transition: opacity 0.18s;
+}
+
+.eye-btn:hover {
+  opacity: 1;
+}
+
+/* Submit button — shared with profile retry button */
+.submit-btn {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.7rem;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: #000;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition:
+    background 0.2s,
+    transform 0.12s,
+    opacity 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #00ffb2;
+  transform: translateY(-1px);
+}
+.submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Spinner inside submit button */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error message below form */
+.error {
+  margin-top: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 6px;
+  background: rgba(255, 77, 109, 0.1);
+  border: 1px solid rgba(255, 77, 109, 0.25);
+  color: var(--danger);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  text-align: center;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-4px);
+  }
+  40%,
+  80% {
+    transform: translateX(4px);
+  }
+}
