@@ -16,6 +16,7 @@ export default [
         btoa: 'readonly',
         atob: 'readonly',
         console: 'readonly',
+        requestAnimationFrame: 'readonly',
       },
     },
     rules: {
