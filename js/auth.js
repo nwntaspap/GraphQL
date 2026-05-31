@@ -9,6 +9,18 @@ export function getToken() {
 }
 
 /**
+ * Decodes JWT payload without verifying signature (client-side only)
+ */
+export function decodeToken(token) {
+  try {
+    const payload = token.split('.')[1];
+    return JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Logs a user in using username/email and password
  * @param {string} identifier - Username or Email
  * @param {string} password - User password
@@ -45,4 +57,12 @@ export async function login(identifier, password) {
   // Store the token safely for the profile page to use
   localStorage.setItem('jwt_token', token);
   return token;
+}
+
+/**
+ * Purges tokens and forces a clean application state reset
+ */
+export function logout() {
+  localStorage.removeItem('jwt_token');
+  window.location.reload();
 }
