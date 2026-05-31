@@ -303,6 +303,27 @@ body {
   flex-shrink: 0;
 }
 
+.header-nav {
+  display: flex;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.nav-link {
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.18s;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
 .logout-btn {
   margin-left: auto;
   flex-shrink: 0;
@@ -367,4 +388,378 @@ body {
 
 .error-state .submit-btn {
   width: fit-content;
+}
+
+/* Page content area */
+.profile-main {
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* Each section fades in */
+.profile-section {
+  margin-bottom: 4rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+.profile-section:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.profile-section:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.profile-section:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+/* Section heading with small number prefix */
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.title-num {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+/* ─── Section 1: Identity ─────────────────────────────────────────────────── */
+
+.identity-card {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+}
+
+/* Two-letter avatar square */
+.avatar {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  background: var(--accent);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.identity-login {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.identity-meta {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.identity-meta code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--surface-2);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+/* ─── Section 2: XP & Audits ─────────────────────────────────────────────── */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.stat-card:hover {
+  border-color: var(--accent);
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Audit ratio progress bar */
+.audit-bar-track {
+  margin-top: 0.75rem;
+  height: 5px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.audit-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+/* ─── Section 3: Results Table ────────────────────────────────────────────── */
+
+.table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.results-table thead tr {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.results-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.results-table td {
+  padding: 0.7rem 1rem;
+  font-size: 0.86rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.results-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.results-table tbody tr:hover {
+  background: var(--surface-2);
+}
+
+.result-name {
+  color: var(--text);
+  font-weight: 600;
+}
+.result-grade {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+.result-date {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+}
+
+.badge-pass {
+  background: rgba(0, 229, 160, 0.15);
+  color: var(--pass-color);
+}
+.badge-fail {
+  background: rgba(255, 77, 109, 0.15);
+  color: var(--fail-color);
+}
+
+/* ─── Section 4: Graphs ───────────────────────────────────────────────────── */
+
+.graph-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.graph-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.graph-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* All SVG graphs get this wrapper */
+.graph-svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+/* SVG element classes used by graphs.js */
+.grid-line {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+.axis-line {
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+.tick-line {
+  stroke: var(--text-muted);
+  stroke-width: 1;
+}
+
+.axis-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--text-muted);
+}
+
+.line-path {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dot {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 2;
+  cursor: pointer;
+}
+
+.donut-pass {
+  fill: var(--pass-color);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.donut-fail {
+  fill: var(--fail-color);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.donut-pass:hover,
+.donut-fail:hover {
+  opacity: 1;
+}
+
+.donut-center-big {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  fill: var(--text);
+}
+
+.donut-center-sub {
+  font-family: var(--font-display);
+  font-size: 12px;
+  fill: var(--text-muted);
+}
+
+.legend-pass {
+  fill: var(--pass-color);
+}
+.legend-fail {
+  fill: var(--fail-color);
+}
+.legend-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  fill: var(--text);
+}
+.legend-total {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--text-muted);
+}
+
+.bar-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--text-dim);
+}
+.bar-rect {
+  fill: var(--accent);
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.bar-rect:hover {
+  opacity: 1;
+}
+.bar-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--text-muted);
+}
+.bar-group:hover .bar-label {
+  fill: var(--text);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .profile-header {
+    padding: 0.7rem 1rem;
+  }
+  .header-nav {
+    display: none;
+  }
+  .profile-main {
+    padding: 2rem 1rem;
+  }
+  .identity-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
