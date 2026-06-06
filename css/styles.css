@@ -8,6 +8,7 @@
 }
 
 :root {
+  --header-height: 70px;
   --bg: #0d0f14;
   --surface: #13161e;
   --surface-2: #1a1e2a;
@@ -401,6 +402,7 @@ body {
 
 /* Each section fades in */
 .profile-section {
+  scroll-margin-top: var(--header-height);
   margin-bottom: 4rem;
   animation: fadeUp 0.5s ease both;
 }
@@ -740,6 +742,11 @@ body {
 }
 .bar-group:hover .bar-label {
   fill: var(--text);
+}
+
+.profile-footer {
+  display: flex;
+  justify-content: center;
 }
 
 /* ─── Responsive ──────────────────────────────────────────────────────────── */
